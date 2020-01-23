@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/variants/DEBase.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/base/IConstraintHandler.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/optimization/problems/cec2010/C01.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/mutation/Mutation.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/mutation/Rand1.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/components/Output.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/test/lania/edu/bled/test/TestStochastic.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/variants/DERand2Bin.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/test/lania/edu/bled/test/TestSolutionC01.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/components/BoundaryHandler.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/test/lania/edu/bled/test/TestRand1Bin.java</file>
+            <file>file:/C:/Users/sdominguez/Documents/NetBeansProjects/BLED/src/lania/edu/bled/de/variants/DERand1Bin.java</file>
+        </group>
+    </open-files>
+</project-private>
