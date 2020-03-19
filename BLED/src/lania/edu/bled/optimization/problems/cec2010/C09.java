@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package lania.edu.bled.optimization.problems.cec2010;
 
 import java.util.Arrays;
@@ -25,11 +24,11 @@ import lania.edu.bled.optimization.problems.ConstrainedProblem;
  *
  * @author sdominguez
  */
-public class C01 extends ConstrainedProblem{
+public class C09 extends ConstrainedProblem{
     
     private double[] upper, lower;
     
-    public C01(int D) {
+    public C09(int D) {
         super(D);
         upper = new double[D]; 
         lower = new double[D];
@@ -38,60 +37,49 @@ public class C01 extends ConstrainedProblem{
     
     private void initialize(){
         for(int i = 0; i < upper.length; i++){
-            upper[i] = 10.0;
-            lower[i] = 0;
+            upper[i] = 500.0;
+            lower[i] = -500.0;
         }
         setLowerLimit(lower);
         setUpperLimit(upper);
     }
     
-
     @Override
     public Solution evaluate(Solution s) {
         double f;
         int nx = getDimension();
         double[] x = Arrays.copyOf(s.getVariables(), nx);
-        double[] g = new double[2];
+        double[] h = new double[1];
         
         int j;
-        double f1, f2, f3, g1, g2;
+        double f1, h1;
         double[] e = new double[nx];
-        double[] o = {0.030858718087483, -0.078632292353156, 0.048651146638038, -0.069089831066354, 
-                      -0.087918542941928, 0.088982639811141, 0.074143235639847, -0.086527593580149, 
-                      -0.020616531903907, 0.055586106499231, 0.059285954883598, -0.040671485554685, 
-                      -0.087399911887693, -0.01842585125741, -0.005184912793062, -0.039892037937026, 
-                      0.036509229387458, 0.026046414854433, -0.067133862936029, 0.082780189144943, 
-                      -0.049336722577062, 0.018503188080959, 0.051610619131255, 0.018613117768432, 
-                      0.093448598181657, -0.071208840780873, -0.036535677894572, -0.03126128526933, 
-                      0.099243805247963, 0.053872445945574};
+        double[] o = {-41.03250252873486, -35.70280591875908, -48.66938576680659, 94.51946988004894, 31.68700466174738, 99.69508270219342, 30.778279925351967, -31.041222172110807, -46.21010370947247, 27.26190010072706, -2.093622677920422, 22.246274570582585, -42.887366421312436, 89.88377145577851, -6.731523713182725, 97.86439204258224, 49.49993772881544, 23.210695390854696, -81.36716857155828, -20.15688556597543, 36.692155371634726, 44.37408948075327, -15.984549833405907, -49.68391424581281, 98.3715576810595, 0.127593155843627, 61.709914317965655, -84.0189999580673, -35.39565398431638, -5.143979333218638};
         for (j = 0; j < nx; j++) {
             e[j] = x[j] - o[j];
         }
 
         /* objective function */
         f1 = 0.;
-        f2 = 1.;
-        f3 = 0.;
-        g1 = 1.;
-        g2 = 0.;
-        for (j = 0; j < nx; j++) {
-            f1 = f1 + Math.pow(Math.cos(e[j]), 4);
-            f2 = f2 * Math.cos(e[j]) * Math.cos(e[j]);
-            f3 = f3 + ((double) (j + 1)) * e[j] * e[j];
-            g1 = g1 * e[j];
-            g2 = g2 + e[j];
+        h1 = 0.;
+
+        for (j = 0; j < (nx - 1); j++) {
+            f1 = f1 + (100.0 * Math.pow(((e[j] + 1.0) * (e[j] + 1.0) - (e[j + 1] + 1.0)), 2) + Math.pow(((e[j] + 1.0) - 1.0), 2));
         }
-        f = Math.abs((f1 - 2.0 * f2) / Math.sqrt(f3));
-        f = -f;
-        g[0] = 0.75 - g1;
-        g[1] = g2 - 7.5 * ((double) nx);
+
+        for (j = 0; j < nx; j++) {
+            h1 = h1 + e[j] * Math.sin(Math.sqrt(Math.abs(e[j])));
+        }
+
+        f = f1;
+        h[0] = h1;
+
         /*Asignar valores al individuo*/
         s.setFitnessValue(f);
-        s.setG(g);
-        s.setH(new double[]{});
+        s.setG(new double[]{});
+        s.setH(h);
         s.setPhi();
         return s;
     }
-    
     
 }

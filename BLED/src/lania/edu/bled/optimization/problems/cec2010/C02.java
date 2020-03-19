@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package lania.edu.bled.optimization.problems.cec2010;
 
 import java.util.Arrays;
@@ -25,11 +24,11 @@ import lania.edu.bled.optimization.problems.ConstrainedProblem;
  *
  * @author sdominguez
  */
-public class C01 extends ConstrainedProblem{
+public class C02 extends ConstrainedProblem{
     
     private double[] upper, lower;
     
-    public C01(int D) {
+    public C02(int D) {
         super(D);
         upper = new double[D]; 
         lower = new double[D];
@@ -38,57 +37,51 @@ public class C01 extends ConstrainedProblem{
     
     private void initialize(){
         for(int i = 0; i < upper.length; i++){
-            upper[i] = 10.0;
-            lower[i] = 0;
+            upper[i] = 5.12;
+            lower[i] = -5.12;
         }
         setLowerLimit(lower);
         setUpperLimit(upper);
     }
     
-
     @Override
     public Solution evaluate(Solution s) {
         double f;
         int nx = getDimension();
         double[] x = Arrays.copyOf(s.getVariables(), nx);
         double[] g = new double[2];
+        double[] h = new double[1];
         
         int j;
-        double f1, f2, f3, g1, g2;
+        double f1, g1, g2, h1;
         double[] e = new double[nx];
-        double[] o = {0.030858718087483, -0.078632292353156, 0.048651146638038, -0.069089831066354, 
-                      -0.087918542941928, 0.088982639811141, 0.074143235639847, -0.086527593580149, 
-                      -0.020616531903907, 0.055586106499231, 0.059285954883598, -0.040671485554685, 
-                      -0.087399911887693, -0.01842585125741, -0.005184912793062, -0.039892037937026, 
-                      0.036509229387458, 0.026046414854433, -0.067133862936029, 0.082780189144943, 
-                      -0.049336722577062, 0.018503188080959, 0.051610619131255, 0.018613117768432, 
-                      0.093448598181657, -0.071208840780873, -0.036535677894572, -0.03126128526933, 
-                      0.099243805247963, 0.053872445945574};
+        double PI = 4.0 * Math.atan(1.0);
+        double[] o = {-0.066939099286697, 0.470966419894494, -0.490528349401176, -0.312203454689423, -0.124759576300523, -0.247823908806285, -0.448077079941866, 0.326494954650117, 0.493435908752668, 0.061699778818925, -0.30251101183711, -0.274045146932175, -0.432969960330318, 0.062239193145781, -0.188163731545079, -0.100709842052095, -0.333528971180922, -0.496627672944882, -0.288650116941944, 0.435648113198148, -0.348261107144255, 0.456550427329479, -0.286843419772511, 0.145639015401174, -0.038656025783381, 0.333291935226012, -0.293687524888766, -0.347859473554797, -0.089300971656411, 0.142027393193559};
         for (j = 0; j < nx; j++) {
             e[j] = x[j] - o[j];
         }
 
         /* objective function */
-        f1 = 0.;
-        f2 = 1.;
-        f3 = 0.;
-        g1 = 1.;
+        f1 = e[0];
+        g1 = 0.;
         g2 = 0.;
+        h1 = 0.;
         for (j = 0; j < nx; j++) {
-            f1 = f1 + Math.pow(Math.cos(e[j]), 4);
-            f2 = f2 * Math.cos(e[j]) * Math.cos(e[j]);
-            f3 = f3 + ((double) (j + 1)) * e[j] * e[j];
-            g1 = g1 * e[j];
-            g2 = g2 + e[j];
+            if (e[j] > f1) {
+                f1 = e[j];
+            }
+            g1 = g1 + (e[j] * e[j] - 10.0 * Math.cos(2 * PI * e[j]) + 10.0);
+            g2 = g2 + (e[j] * e[j] - 10.0 * Math.cos(2 * PI * e[j]) + 10.0);
+            h1 = h1 + ((e[j] - 0.5) * (e[j] - 0.5) - 10 * Math.cos(2 * PI * (e[j] - 0.5)) + 10.0);
         }
-        f = Math.abs((f1 - 2.0 * f2) / Math.sqrt(f3));
-        f = -f;
-        g[0] = 0.75 - g1;
-        g[1] = g2 - 7.5 * ((double) nx);
+        f = f1;
+        g[0] = 10.0 - g1 / ((double) nx);
+        g[1] = -15.0 + g2 / ((double) nx);
+        h[0] = -20.0 + h1 / ((double) nx);
         /*Asignar valores al individuo*/
         s.setFitnessValue(f);
         s.setG(g);
-        s.setH(new double[]{});
+        s.setH(h);
         s.setPhi();
         return s;
     }
