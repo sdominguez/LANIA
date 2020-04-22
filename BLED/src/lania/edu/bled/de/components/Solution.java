@@ -26,7 +26,7 @@ import lania.edu.bled.base.ISolution;
  */
 public class Solution implements ISolution, Serializable{
 
-    private double[] x, g, h;
+    private double[] x, g, h, deltas;
     private double f, phi;
     
     /**
@@ -43,6 +43,42 @@ public class Solution implements ISolution, Serializable{
     }
     
     /**
+     * Recibe el número de variables de decisión
+     * deberá ser la misma que la dimensionalidad del problema
+     * @param D numero de variables de decisión del problema
+     * @param m número de restricciones de desigualdad
+     * @param p número de restricciones de igualdad
+     */
+    public Solution(int D, int m, int p){
+        x = new double[D];
+        g = new double[m];
+        h = new double[p];
+        f = 0.0;
+        phi = 0.0;
+        deltas = new double[p];
+        for(int i = 0; i < p; i++){
+            deltas[i] = DELTA;
+        }
+    }
+    
+    /**
+     * Recibe el número de variables de decisión
+     * deberá ser la misma que la dimensionalidad del problema
+     * @param D numero de variables de decisión del problema
+     * @param m número de restricciones de desigualdad
+     * @param p número de restricciones de igualdad
+     * @param deltas tolerancias para restricciones de igualdad
+     */
+    public Solution(int D, int m, int p, double[] deltas){
+        x = new double[D];
+        g = new double[m];
+        h = new double[p];
+        f = 0.0;
+        phi = 0.0;
+        deltas = Arrays.copyOf(deltas, p);
+    }
+    
+    /**
      * @return X un vector con las variables de diseño
      */
     @Override
@@ -56,6 +92,26 @@ public class Solution implements ISolution, Serializable{
     public double getFitnessValue() {
         return f;
     }
+    /**
+     * @return valores de las restricciones de desigualdad 
+     */
+    public double[] getG() {
+        return g;
+    }
+    /**
+     * @return valores de las restricciones de igualdad 
+     */
+    public double[] getH() {
+        return h;
+    }
+    /**
+     * @return valores de las tolerancias en restricciones de igualdad 
+     */
+    public double[] getDeltas() {
+        return deltas;
+    }
+
+    
     /**
      * @return phi(X) la suma de violación de restricciones
      */
@@ -85,6 +141,10 @@ public class Solution implements ISolution, Serializable{
     public void setH(double[] H){
         h = Arrays.copyOf(H, H.length);
     }
+
+    public void setDeltas(double[] deltas) {
+        this.deltas = Arrays.copyOf(deltas, deltas.length);
+    }
     
     /**
      * Calcula la suma de violación de restricciones. 
@@ -101,7 +161,11 @@ public class Solution implements ISolution, Serializable{
         double hx = 0;
         for (int pos = 0; pos < h.length; pos++) {
             if (!Double.isNaN(h[pos])) {
-                hx += Math.max(0, Math.abs(h[pos]) - 1.0E-4);
+                if (deltas != null && deltas.length != h.length) {
+                    hx += Math.max(0, Math.abs(h[pos]) - DELTA);
+                } else {
+                    hx += Math.max(0, Math.abs(h[pos]) - deltas[pos]);
+                }
             }
         }
         phi = gx + hx;
