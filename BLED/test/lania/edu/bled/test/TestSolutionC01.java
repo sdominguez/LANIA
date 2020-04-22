@@ -1,7 +1,6 @@
 package lania.edu.bled.test;
 
 import lania.edu.bled.de.components.Solution;
-import lania.edu.bled.de.variants.DEBase;
 import lania.edu.bled.optimization.problems.ConstrainedProblem;
 import lania.edu.bled.optimization.problems.cec2010.C01;
 
