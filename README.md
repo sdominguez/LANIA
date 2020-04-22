@@ -1,2 +1,2 @@
 # BLED
-Library for Differential Evolution in JAVA
+Java Library for Differential Evolution
