@@ -161,7 +161,7 @@ public class Solution implements ISolution, Serializable{
         double hx = 0;
         for (int pos = 0; pos < h.length; pos++) {
             if (!Double.isNaN(h[pos])) {
-                if (deltas != null && deltas.length != h.length) {
+                if (deltas == null || deltas.length != h.length) {
                     hx += Math.max(0, Math.abs(h[pos]) - DELTA);
                 } else {
                     hx += Math.max(0, Math.abs(h[pos]) - deltas[pos]);
