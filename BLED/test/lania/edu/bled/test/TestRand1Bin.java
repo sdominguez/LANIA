@@ -19,7 +19,8 @@ package lania.edu.bled.test;
 import lania.edu.bled.de.components.Solution;
 import lania.edu.bled.de.variants.DERand1Bin;
 import lania.edu.bled.optimization.problems.ConstrainedProblem;
-import lania.edu.bled.optimization.problems.cec2010.C01;
+import lania.edu.bled.optimization.problems.cec2010.*;
+import lania.edu.bled.optimization.problems.engineering.PressureVessel;
 
 /**
  *
@@ -30,16 +31,11 @@ public class TestRand1Bin {
     
         
     public static void main(String[] args) {
-        ConstrainedProblem c01 = new C01(10);
-        Solution s = new Solution(c01.getDimension());
-        //Rand1Bin_frules rand1bin = new DERand1Bin(55, 0.8, 0.9, 200000, c01);
-        //rand1bin.run();
-        //System.out.println(rand1bin.getOutput().getBestSolution().getFitnessValue());
+        ConstrainedProblem P = new PressureVessel();
         
         for(int i = 0; i < 25; i++){
-            Runnable rand1bin = new DERand1Bin(55, 0.8, 0.9, 200000, c01);
-            Thread t = new Thread(rand1bin);
-            t.start();
+            DERand1Bin rand1bin = new DERand1Bin(20, 0.5, 0.9, 200000, P);
+            rand1bin.run();
         }
     }
 }
