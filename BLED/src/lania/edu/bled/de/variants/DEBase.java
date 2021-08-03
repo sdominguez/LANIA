@@ -86,7 +86,7 @@ public class DEBase implements IDifferentialEvolution {
         output.setFitnessEvaluations(fes);
         output.setPopulation(targets);
         output.setGenerations(g);
-        System.out.println(targets.get(0).getFitnessValue());
+        System.out.println(targets.get(0).getFitnessValue()+" "+targets.get(0).getPhi());
     }
 
     @Override
