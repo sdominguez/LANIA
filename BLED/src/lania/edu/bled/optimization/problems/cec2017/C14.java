@@ -106,7 +106,7 @@ public class C14 extends ConstrainedProblem{
         f = f1;
         g[0] = g1 + 1 - Math.abs(e[0]);
         h[0] = h1 - 4;
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(h);

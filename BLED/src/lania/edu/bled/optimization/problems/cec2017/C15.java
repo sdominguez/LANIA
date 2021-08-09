@@ -98,7 +98,7 @@ public class C15 extends ConstrainedProblem{
         f = f1;
         g[0] = g1 - 100 * nx;
         h[0] = Math.cos(f1) + Math.sin(f1);
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(h);

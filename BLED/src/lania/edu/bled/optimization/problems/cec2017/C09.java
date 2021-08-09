@@ -101,7 +101,7 @@ public class C09 extends ConstrainedProblem{
         f = f1;
         h[0] = h1;
         g[0] = g1;
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(h);

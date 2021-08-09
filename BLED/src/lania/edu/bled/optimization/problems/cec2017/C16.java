@@ -94,7 +94,7 @@ public class C16 extends ConstrainedProblem{
         f = f1;
         g[0] = g1 - 100 * nx;
         h[0] = Math.pow(Math.cos(f1) + Math.sin(f1), 2) - Math.exp(Math.cos(f1) + Math.sin(f1)) - 1 + Math.exp(1.0);
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(h);

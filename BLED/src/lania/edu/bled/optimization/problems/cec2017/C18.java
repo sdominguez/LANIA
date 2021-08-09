@@ -102,7 +102,7 @@ public class C18 extends ConstrainedProblem{
             g2 += Math.pow(e[i], 2);
         }
         
-        for ( i = 0; i < nx; i++) {
+        for ( i = 0; i < (nx - 1); i++) {
             h2 += 100*Math.pow((Math.pow(e[i], 2) - e[i+1]), 2);
         }
         
@@ -114,7 +114,7 @@ public class C18 extends ConstrainedProblem{
         h[0] = h2 + h1;
         g[0] = 1 - g1;
         g[1] = g2 - 100*nx;
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(h);

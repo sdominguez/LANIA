@@ -86,7 +86,7 @@ public class C13 extends ConstrainedProblem{
         g2 = 0.;
         g3 = 0.;
         
-        for (i = 0; i < nx; i++) {
+        for (i = 0; i < (nx - 1); i++) {
             f1 = f1 + (100 * Math.pow((Math.pow(e[i], 2) - e[i+1]), 2) + Math.pow((e[i] - 1), 2));
         }
         
@@ -100,7 +100,7 @@ public class C13 extends ConstrainedProblem{
         g[0] = g1 - 100;
         g[1] = g2 - (2*nx);
         g[2] = 5 - g3;
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(new double[]{});

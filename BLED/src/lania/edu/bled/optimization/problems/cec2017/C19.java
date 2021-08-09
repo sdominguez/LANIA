@@ -100,7 +100,7 @@ public class C19 extends ConstrainedProblem{
         f = f1;
         g[0] = g1 + (nx - 1) * 10 / Math.exp(-5.0);
         g[1] = g2 - 0.5*nx;
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(new double[]{});

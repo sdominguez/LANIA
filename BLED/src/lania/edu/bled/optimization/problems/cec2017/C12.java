@@ -97,7 +97,7 @@ public class C12 extends ConstrainedProblem{
         f = f1;
         g[0] = g1 + 4;
         g[1] = g2 - 4;
-        /*Asignar valores al individuo*/
+        /* Set values to individual */
         s.setFitnessValue(f);
         s.setG(g);
         s.setH(new double[]{});
