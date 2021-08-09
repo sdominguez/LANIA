@@ -24,27 +24,51 @@ import lania.edu.bled.optimization.problems.cec2017.*;
 
 /**
  *
- * @author Saul
+ * @author sdominguez
  */
 public class TestRand1BinCEC2017 {
-    
+
     public static void main(String[] args) {
+        List<ConstrainedProblem> functions = new ArrayList();
+
+        /* Set dimention size; Use 10, 30, 50 or 100*/
         int d = 50;
-        ConstrainedProblem C01 = new C01(10);
-        List<ConstrainedProblem> p = new ArrayList();
-        p.add(new C01(d));
-        //p.add(new C02(d));
-        p.add(new C03(d));
-        p.add(new C04(d));
-        
-        
-        for(ConstrainedProblem cp : p){
-            System.out.println("\n");
-            for(int i = 0; i < 1; i++){
-                DERand1Bin rand1bin = new DERand1Bin(20, 0.5, 0.9, 200000, cp);
+
+        /*Test functions to evaluate*/
+        functions.add(new C01(d));
+        functions.add(new C02(d));
+        functions.add(new C03(d));
+        functions.add(new C04(d));
+        functions.add(new C05(d));
+        functions.add(new C06(d));
+        functions.add(new C07(d));
+        functions.add(new C08(d));
+        functions.add(new C09(d));
+        functions.add(new C10(d));
+        functions.add(new C11(d));
+        functions.add(new C12(d));
+        functions.add(new C13(d));
+        functions.add(new C14(d));
+        functions.add(new C15(d));
+        functions.add(new C16(d));
+        functions.add(new C17(d));
+        functions.add(new C18(d));
+        functions.add(new C19(d));
+        functions.add(new C20(d));
+        functions.add(new C21(d));
+        functions.add(new C22(d));
+        functions.add(new C23(d));
+        functions.add(new C24(d));
+        functions.add(new C25(d));
+        functions.add(new C26(d));
+        functions.add(new C27(d));
+        functions.add(new C28(d));
+
+        System.out.println("Fitnesss Value:\t\tPhi:");
+        functions.forEach((function) -> {
+                DERand1Bin rand1bin = new DERand1Bin(20, 0.5, 0.9, 200000, function);
                 rand1bin.run();
-            }
-        }
+        });
     }
-    
+
 }
