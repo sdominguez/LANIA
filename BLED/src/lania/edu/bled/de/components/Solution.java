@@ -42,6 +42,19 @@ public class Solution implements ISolution, Serializable{
         phi = 0.0;
     }
     
+    
+    /**
+     * Recibe las variables de decisión del problema
+     * @param X 
+     */
+    public Solution(double[] X){
+        x = Arrays.copyOf(X, X.length);
+        g = new double[50];
+        h = new double[50];
+        f = 0.0;
+        phi = 0.0;
+    }
+    
     /**
      * Recibe el número de variables de decisión
      * deberá ser la misma que la dimensionalidad del problema
