@@ -128,6 +128,15 @@ public class Solution implements ISolution, Serializable{
         x = Arrays.copyOf(X, X.length);
     }
     /**
+     * Asigna un valor de una variable de decisión en el indice determinado 
+     * @param index 
+     * @param value
+     */
+    public void setVariable(int index, double value) {
+        x[index] = value;
+    }
+    
+    /**
      * Asigna el vector con los valores de las restricciones de desigualdad
      * @param G 
      */
