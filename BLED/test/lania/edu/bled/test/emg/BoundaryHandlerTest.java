@@ -174,4 +174,89 @@ public class BoundaryHandlerTest {
             System.out.println(element);
         }
     }
+    
+    @Test 
+    public void PUO8(){
+        System.out.println("\n PU-08");
+        ConstrainedProblem problema = new C01(5);
+        double x[] = {1.0,2.0,3.0,4.0,100.0};
+        double resultadoRandom [] = BoundaryHandler.random(x, problema);
+        for (double element:resultadoRandom){
+            Assert.assertTrue(element>=-100.00 && element<=100.00);
+            System.out.println(element);
+        }
+        double resultadoReflex[] = BoundaryHandler.reflex(x, problema);
+        for (double elementR:resultadoReflex){
+            Assert.assertTrue(elementR>=-100.00 && elementR<=100.00);
+            System.out.println(elementR);
+        }
+    }
+    
+    @Test
+    public void PU09(){
+        System.out.println("\n PU-09");
+        ConstrainedProblem problema = new C01(10);
+        double x[] = {1.0,2.0,3.0,4.0,100.0};
+        double resultadoReflex[] = BoundaryHandler.reflex(x, problema);
+        for (double elementR:resultadoReflex){
+            Assert.assertTrue(elementR>=-100.00 && elementR<=100.00);
+            System.out.println(elementR);
+        }
+        double resultadoRandom [] = BoundaryHandler.random(x, problema);
+        for (double element:resultadoRandom){
+            Assert.assertTrue(element>=-100.00 && element<=100.00);
+            System.out.println(element);
+        }
+    }
+    
+    @Test 
+    public void PU10(){
+        System.out.println("\n PU-10");
+        ConstrainedProblem problema = new C01(10);
+        double x[] = {1.0,2.0,3.0,4.0,100.0};
+        double resultadoRandom [] = BoundaryHandler.random(x, problema);
+        for (double element:resultadoRandom){
+            Assert.assertTrue(element>=-100.00 && element<=100.00);
+            System.out.println(element);
+        }
+        double resultadoReflex[] = BoundaryHandler.reflex(x, problema);
+        for (double elementR:resultadoReflex){
+            Assert.assertTrue(elementR>=-100.00 && elementR<=100.00);
+            System.out.println(elementR);
+        }
+    }
+    
+    @Test
+    public void PU11(){
+        System.out.println("\n PU-11");
+        ConstrainedProblem problema = new C01(3);
+        double x[] = {1.0,2.0,3.0,4.0,100.0};
+        double resultadoReflex[] = BoundaryHandler.reflex(x, problema);
+        for (double elementR:resultadoReflex){
+            Assert.assertTrue(elementR>=-100.00 && elementR<=100.00);
+            System.out.println(elementR);
+        }
+        double resultadoRandom [] = BoundaryHandler.random(x, problema);
+        for (double element:resultadoRandom){
+            Assert.assertTrue(element>=-100.00 && element<=100.00);
+            System.out.println(element);
+        }
+    }
+    
+    @Test 
+    public void PU12(){
+        System.out.println("\n PU-12");
+        ConstrainedProblem problema = new C01(3);
+        double x[] = {1.0,2.0,3.0,4.0,100.0};
+        double resultadoRandom [] = BoundaryHandler.random(x, problema);
+        for (double element:resultadoRandom){
+            Assert.assertTrue(element>=-100.00 && element<=100.00);
+            System.out.println(element);
+        }
+        double resultadoReflex[] = BoundaryHandler.reflex(x, problema);
+        for (double elementR:resultadoReflex){
+            Assert.assertTrue(elementR>=-100.00 && elementR<=100.00);
+            System.out.println(elementR);
+        }
+    }
 }
