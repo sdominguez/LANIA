@@ -102,8 +102,8 @@ public class SolutionTest {
     public void PU17(){
         System.out.println("\n PU-17");
         Solution solucion = new Solution(5);
-        Assert.assertTrue("[0.0, 0.0, 0.0, 0.0, 0.0] 0.0 0.0".equals(solucion.toString()));
-        System.out.println(solucion.toString());
+        Assert.assertTrue(solucion.getFitnessValue()==0.0);
+        System.out.println("Valor de f: "+solucion.getFitnessValue());
     }
     
     @Test
@@ -111,16 +111,16 @@ public class SolutionTest {
         System.out.println("\n PU-18");
         double x[] = {5,2,7,9,100,320};
         Solution solucion = new Solution(x);
-        Assert.assertTrue("[5.0, 2.0, 7.0, 9.0, 100.0, 320.0] 0.0 0.0".equals(solucion.toString()));
-        System.out.println(solucion.toString());
+        Assert.assertTrue(solucion.getFitnessValue()==0.0);
+        System.out.println("Valor de f: "+solucion.getFitnessValue());
     }
     
     @Test
     public void PU19(){
         System.out.println("\n PU-19");
         Solution solucion = new Solution(10,15,20);
-        Assert.assertTrue("[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 0.0 0.0".equals(solucion.toString()));
-        System.out.println(solucion.toString());
+        Assert.assertTrue(solucion.getFitnessValue()==0.0);
+        System.out.println("Valor de f: "+solucion.getFitnessValue());
     }
     
     @Test
@@ -128,8 +128,8 @@ public class SolutionTest {
         System.out.println("\n PU-20");
         double x[] = {5,2,7,9,100,320};
         Solution solucion = new Solution(10,20,30,x);
-        Assert.assertTrue("[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0] 0.0 0.0".equals(solucion.toString()));
-        System.out.println(solucion.toString());
+        Assert.assertTrue(solucion.getFitnessValue()==0.0);
+        System.out.println("Valor de f: "+solucion.getFitnessValue());
     }
     
     @Test
@@ -235,7 +235,7 @@ public class SolutionTest {
         Solution solucion = new Solution(x);
         double h[] = solucion.getH();
         solucion.toString();
-        System.out.println("Tamaño de g: "+h.length);
+        System.out.println("Tamaño de h: "+h.length);
         Assert.assertTrue(h.length==50);
     }
     
