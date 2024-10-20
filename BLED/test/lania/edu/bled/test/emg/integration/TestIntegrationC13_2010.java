@@ -16,12 +16,10 @@
  */
 package lania.edu.bled.test.emg.integration;
 
-import java.util.Arrays;
 import lania.edu.bled.de.components.Solution;
 import lania.edu.bled.de.variants.DERand1Bin;
 import lania.edu.bled.de.variants.DERand2Bin;
-import lania.edu.bled.optimization.problems.cec2010.C01;
-import lania.edu.bled.optimization.problems.cec2010.C02;
+import lania.edu.bled.optimization.problems.cec2010.C13;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -34,9 +32,9 @@ import static org.junit.Assert.*;
  *
  * @author esteb
  */
-public class TestIntegrationC01_2010 {
+public class TestIntegrationC13_2010 {
     
-    public TestIntegrationC01_2010() {
+    public TestIntegrationC13_2010() {
     }
     
     @BeforeClass
@@ -60,18 +58,15 @@ public class TestIntegrationC01_2010 {
     //
     // @Test
     // public void hello() {}
-    
-    
-    //Problema C01 con tamaño de 10 dimensiones
     @Test
-    public void PI01(){ 
-        System.out.println("\n PI-01");
+    public void PI45(){ 
+        System.out.println("\n PI-45");
         int totalRuns = 25;
         int successfulRuns = 0;
         for (int run = 1; run <= totalRuns; run++) {
             System.out.println("Ejecucion numero: " + run);
-            C01 c01 = new C01(10);
-            DERand1Bin rand1 = new DERand1Bin(20, 0.5, 0.9, 200000, c01);
+            C13 C13 = new C13(10);
+            DERand1Bin rand1 = new DERand1Bin(20, 0.5, 0.9, 200000, C13);
             rand1.initializePopulation();
             rand1.run();
             Solution bestSolution = rand1.getOutput().getBestSolution();
@@ -79,9 +74,9 @@ public class TestIntegrationC01_2010 {
             System.out.println("Mejor valor de la funcion objetivo :" + rand1.getOutput().getBestSolution().getFitnessValue());
             System.out.println("Valor de g1: " + g[0]);
             System.out.println("Valor de g2: " + g[1]);
+            System.out.println("Valor de g3: " + g[2]);
             
-            
-            if (g[0] <= 0 && g[1] <= 0) {
+            if (g[0] <= 0 && g[1] <= 0 && g[2]<=0) {
                 System.out.println("Ejecucion " + run + " cumple con todas las restricciones.");
                 successfulRuns++;
             } else {
@@ -93,16 +88,16 @@ public class TestIntegrationC01_2010 {
         Assert.assertTrue("Ninguna de las ejecuciones cumplio con las restricciones.", successfulRuns > 0);
     }
     
-    //Problema C01 con tamaño de 30 dimensiones
+    //Problema C13 con tamaño de 30 dimensiones
     @Test
-    public void PI02(){ 
-        System.out.println("\n PI-02");
+    public void PI46(){ 
+        System.out.println("\n PI-46");
         int totalRuns = 25;
         int successfulRuns = 0;
         for (int run = 1; run <= totalRuns; run++) {
             System.out.println("Ejecucion numero: " + run);
-            C01 c01 = new C01(30);
-            DERand1Bin rand1 = new DERand1Bin(20, 0.5, 0.9, 600000, c01);
+            C13 C13 = new C13(30);
+            DERand1Bin rand1 = new DERand1Bin(20, 0.5, 0.9, 600000, C13);
             rand1.initializePopulation();
             rand1.run();
             Solution bestSolution = rand1.getOutput().getBestSolution();
@@ -110,9 +105,9 @@ public class TestIntegrationC01_2010 {
             System.out.println("Mejor valor de la funcion objetivo :" + rand1.getOutput().getBestSolution().getFitnessValue());
             System.out.println("Valor de g1: " + g[0]);
             System.out.println("Valor de g2: " + g[1]);
+            System.out.println("Valor de g3: " + g[2]);
             
-            
-            if (g[0] <= 0 && g[1] <= 0) {
+            if (g[0] <= 0 && g[1] <= 0 && g[2]<=0) {
                 System.out.println("Ejecucion " + run + " cumple con todas las restricciones.");
                 successfulRuns++;
             } else {
@@ -125,14 +120,14 @@ public class TestIntegrationC01_2010 {
     }
     
     @Test
-    public void PI03(){ 
-        System.out.println("\n PI-03");
+    public void PI47(){ 
+        System.out.println("\n PI-47");
         int totalRuns = 25;
         int successfulRuns = 0;
         for (int run = 1; run <= totalRuns; run++) {
             System.out.println("Ejecucion numero: " + run);
-            C01 c01 = new C01(10);
-            DERand2Bin rand2 = new DERand2Bin(20, 0.5, 0.9, 200000, c01);
+            C13 C13 = new C13(10);
+            DERand2Bin rand2 = new DERand2Bin(20, 0.5, 0.9, 200000, C13);
             rand2.initializePopulation();
             rand2.run();
             Solution bestSolution = rand2.getOutput().getBestSolution();
@@ -140,9 +135,9 @@ public class TestIntegrationC01_2010 {
             System.out.println("Mejor valor de la funcion objetivo :" + rand2.getOutput().getBestSolution().getFitnessValue());
             System.out.println("Valor de g1: " + g[0]);
             System.out.println("Valor de g2: " + g[1]);
+            System.out.println("Valor de g3: " + g[2]);
             
-            
-            if (g[0] <= 0 && g[1] <= 0) {
+            if (g[0] <= 0 && g[1] <= 0 && g[2]<=0) {
                 System.out.println("Ejecucion " + run + " cumple con todas las restricciones.");
                 successfulRuns++;
             } else {
@@ -154,16 +149,16 @@ public class TestIntegrationC01_2010 {
         Assert.assertTrue("Ninguna de las ejecuciones cumplio con las restricciones.", successfulRuns > 0);
     }
     
-    //Problema C01 con tamaño de 30 dimensiones
+    //Problema C13 con tamaño de 30 dimensiones
     @Test
-    public void PI04(){ 
-        System.out.println("\n PI-04");
+    public void PI48(){ 
+        System.out.println("\n PI-48");
         int totalRuns = 25;
         int successfulRuns = 0;
         for (int run = 1; run <= totalRuns; run++) {
             System.out.println("Ejecucion numero: " + run);
-            C01 c01 = new C01(30);
-            DERand2Bin rand2 = new DERand2Bin(20, 0.5, 0.9, 600000, c01);
+            C13 C13 = new C13(30);
+            DERand2Bin rand2 = new DERand2Bin(20, 0.5, 0.9, 600000, C13);
             rand2.initializePopulation();
             rand2.run();
             Solution bestSolution = rand2.getOutput().getBestSolution();
@@ -171,9 +166,9 @@ public class TestIntegrationC01_2010 {
             System.out.println("Mejor valor de la funcion objetivo :" + rand2.getOutput().getBestSolution().getFitnessValue());
             System.out.println("Valor de g1: " + g[0]);
             System.out.println("Valor de g2: " + g[1]);
+            System.out.println("Valor de g3: " + g[2]);
             
-            
-            if (g[0] <= 0 && g[1] <= 0) {
+            if (g[0] <= 0 && g[1] <= 0 && g[2]<=0) {
                 System.out.println("Ejecucion " + run + " cumple con todas las restricciones.");
                 successfulRuns++;
             } else {
